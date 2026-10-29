@@ -16,6 +16,9 @@ class Bibliotheque:
     def rechercher_par_auteur(self, auteur):
         return [l for l in self._livres if l.auteur.lower() == auteur.lower()]
 
+    def nombre_disponibles(self):
+        return sum(1 for l in self._livres if l.disponible)
+
     @property
     def livres(self):
         return list(self._livres)
