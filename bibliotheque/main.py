@@ -27,3 +27,7 @@ def main():
     for livre in biblio.rechercher_par_auteur("Albert Camus"):
         print(f" - {livre}")
 
+
+    print('Recherche « peste » :')
+    for livre in biblio.rechercher_par_titre("peste"):
+        print(f" - {livre}")
