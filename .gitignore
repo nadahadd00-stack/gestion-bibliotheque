@@ -26,3 +26,4 @@ Thumbs.db
 
 # Journaux
 *.log
+.env
