@@ -19,6 +19,9 @@ class Bibliotheque:
     def nombre_disponibles(self):
         return sum(1 for l in self._livres if l.disponible)
 
+    def trier_par_titre(self):
+        return sorted(self._livres, key=lambda l: l.titre)
+
     @property
     def livres(self):
         return list(self._livres)
