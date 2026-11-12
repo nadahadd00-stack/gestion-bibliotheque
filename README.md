@@ -24,6 +24,8 @@ python -m bibliotheque.main
 
 \- Recherche par titre, auteur et ISBN
 
+\- Suppression d'un livre par ISBN
+
 \## Contribuer
 
 Consultez \[CONTRIBUTING.md](CONTRIBUTING.md) avant d'ouvrir une pull request.
