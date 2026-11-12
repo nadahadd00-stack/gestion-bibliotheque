@@ -23,6 +23,7 @@ python -m bibliotheque.main
 \- Ajout et recherche de livres
 
 \- Recherche par titre, auteur et ISBN
+- Sauvegarde et chargement du catalogue au format JSON
 
 \## Contribuer
 
