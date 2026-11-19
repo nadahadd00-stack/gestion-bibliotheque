@@ -27,3 +27,5 @@ Thumbs.db
 # Journaux
 *.log
 .env
+# Donnees generees par l'application
+catalogue.json
