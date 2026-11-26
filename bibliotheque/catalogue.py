@@ -19,6 +19,10 @@ class Bibliotheque:
     def nombre_disponibles(self):
         return sum(1 for l in self._livres if l.disponible)
 
+    def nombre_empruntes(self):
+        return len(self._livres) - self.nombre_disponibles()
+
+
     def trier_par_titre(self, inverse=False):
         return sorted(self._livres, key=lambda l: l.titre, reverse=inverse)
 

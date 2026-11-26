@@ -78,3 +78,10 @@ def test_exemple_skip():
 def test_recherche_sans_accent(biblio):
     assert len(biblio.rechercher_par_titre("etranger")) == 1
 
+def test_nombre_empruntes(biblio):
+    assert biblio.nombre_empruntes() == 0
+
+    biblio.rechercher_par_isbn("978-2-07-036822-8").emprunter()
+
+    assert biblio.nombre_empruntes() == 1
+
