@@ -85,3 +85,13 @@ def test_nombre_empruntes(biblio):
 
     assert biblio.nombre_empruntes() == 1
 
+def test_livres_disponibles(biblio):
+    assert len(biblio.livres_disponibles()) == 3
+
+    biblio.rechercher_par_isbn("978-2-07-036822-8").emprunter()
+
+    livres = biblio.livres_disponibles()
+
+    assert len(livres) == 2
+    assert all(livre.disponible for livre in livres)
+

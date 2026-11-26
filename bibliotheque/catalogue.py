@@ -7,6 +7,9 @@ class Bibliotheque:
     def ajouter(self, livre):
         self._livres.append(livre)
 
+    def livres_disponibles(self):
+        return [l for l in self._livres if l.disponible]
+
     def rechercher_par_isbn(self, isbn):
         for livre in self._livres:
             if livre.isbn == isbn:
@@ -17,7 +20,7 @@ class Bibliotheque:
         return [l for l in self._livres if l.auteur.lower() == auteur.lower()]
 
     def nombre_disponibles(self):
-        return sum(1 for l in self._livres if l.disponible)
+        return len(self.livres_disponibles())
 
     def nombre_empruntes(self):
         return len(self._livres) - self.nombre_disponibles()
