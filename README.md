@@ -13,7 +13,7 @@ Prérequis : Python 3.9 ou supérieur.
 \## Auteurs
 
 \- Nada
-
+ - Israe
 ## Exécution
 
 python -m bibliotheque.main
