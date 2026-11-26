@@ -14,9 +14,8 @@ Merci de contribuer à ce projet ! Voici les règles à suivre.
 
 &#x20;  `fix/nom-court` ou `docs/nom-court`.
 
-3\. Faites des commits atomiques, avec des messages au format
-
-&#x20;  `type: résumé` (`feat`, `fix`, `docs`, `chore`).
+3. Faites des commits atomiques, avec des messages au format
+   `type: résumé` (`feat`, `fix`, `docs`, `chore`, `test`).
 
 4\. Poussez votre branche et ouvrez une pull request vers `main`.
 
@@ -28,18 +27,23 @@ Merci de contribuer à ce projet ! Voici les règles à suivre.
 
 
 
-\## Règles
+## Règles
 
-\- Ne poussez jamais directement sur `main`.
+- Ne poussez jamais directement sur `main`.
 
-\- Une pull request = un sujet, de préférence moins de 300 lignes.
+- Une pull request = un sujet, de préférence moins de 300 lignes.
 
-\- Ne committez jamais de mot de passe, de clé ou de fichier `.env`.
+- Ne committez jamais de mot de passe, de clé ou de fichier `.env`.
 
-\- Le programme doit s'exécuter avant toute demande de revue :
+- Le programme doit s'exécuter avant toute demande de revue :
+  `python -m bibliotheque.main`.
 
-&#x20; `python -m bibliotheque.main`.
+- Tous les tests doivent passer avant toute demande de revue : `pytest`.
 
+- Toute nouvelle fonctionnalité ou correction de bug s'accompagne d'un test.
+
+- La couverture ne doit pas descendre sous 80 % :
+  `pytest --cov=bibliotheque --cov-fail-under=80`.
 
 
 \## Signaler un problème
