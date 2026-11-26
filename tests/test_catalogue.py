@@ -1,0 +1,46 @@
+def test_catalogue_vide():
+    from bibliotheque.catalogue import Bibliotheque
+    assert len(Bibliotheque()) == 0
+
+
+def test_ajouter(biblio):
+    assert len(biblio) == 3
+
+
+def test_rechercher_par_isbn_trouve(biblio):
+    assert biblio.rechercher_par_isbn("978-2-07-036822-8").titre == "La Peste"
+
+
+def test_rechercher_par_isbn_inconnu(biblio):
+    assert biblio.rechercher_par_isbn("000") is None
+
+
+def test_nombre_disponibles(biblio):
+    assert biblio.nombre_disponibles() == 3
+    biblio.rechercher_par_isbn("978-2-07-036822-8").emprunter()
+    assert biblio.nombre_disponibles() == 2
+
+
+def test_trier_par_titre(biblio):
+    titres = [l.titre for l in biblio.trier_par_titre()]
+    assert titres == sorted(titres)
+
+
+def test_trier_par_titre_inverse(biblio):
+    titres = [l.titre for l in biblio.trier_par_titre(inverse=True)]
+    assert titres == sorted(titres, reverse=True)
+
+
+def test_supprimer_existant(biblio):
+    assert biblio.supprimer("978-2-07-036822-8") is True
+    assert len(biblio) == 2
+
+
+def test_supprimer_inconnu(biblio):
+    assert biblio.supprimer("000") is False
+    assert len(biblio) == 3
+
+
+def test_livres_retourne_une_copie(biblio):
+    biblio.livres.clear()
+    assert len(biblio) == 3
