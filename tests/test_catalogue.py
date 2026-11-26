@@ -1,3 +1,5 @@
+import pytest
+
 def test_catalogue_vide():
     from bibliotheque.catalogue import Bibliotheque
     assert len(Bibliotheque()) == 0
@@ -44,3 +46,35 @@ def test_supprimer_inconnu(biblio):
 def test_livres_retourne_une_copie(biblio):
     biblio.livres.clear()
     assert len(biblio) == 3
+
+
+@pytest.mark.parametrize(
+    "auteur, attendu",
+    [
+        ("Albert Camus", 2),
+        ("albert camus", 2),
+        ("ALBERT CAMUS", 2),
+        ("Antoine de Saint-Exupéry", 1),
+        ("Inconnu", 0),
+    ],
+)
+def test_rechercher_par_auteur(biblio, auteur, attendu):
+    assert len(biblio.rechercher_par_auteur(auteur)) == attendu
+
+
+@pytest.mark.parametrize(
+    "mot, attendu",
+    [("peste", 1), ("PETIT", 1), ("le", 1), ("zzz", 0)],
+)
+def test_rechercher_par_titre(biblio, mot, attendu):
+    assert len(biblio.rechercher_par_titre(mot)) == attendu
+
+@pytest.mark.skip(reason="exemple de marqueur skip : fonctionnalité non prévue")
+def test_exemple_skip():
+    assert False
+
+
+@pytest.mark.xfail(reason="exemple de xfail : la recherche ignore les accents (limite connue)")
+def test_recherche_sans_accent(biblio):
+    assert len(biblio.rechercher_par_titre("etranger")) == 1
+
